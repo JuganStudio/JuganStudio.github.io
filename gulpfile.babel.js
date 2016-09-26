@@ -54,14 +54,14 @@ gulp.task('babel', () => {
 });
 
 gulp.task('babel-express', () => {
-  return gulp.src('src/express/app.js')
+  return gulp.src(SRC.EXPRESS)
     // .pipe( cache.filter() )
     .pipe( babel({
       presets: ['es2015'],
       plugins: ["transform-runtime", "transform-async-to-generator"]
     }) )
     // .pipe( cache.cache() )
-    .pipe( gulp.dest('express-app/') )
+    .pipe( gulp.dest(DEST.EXPRESS) )
 });
 
 gulp.task('webpack-react', () => {
@@ -133,6 +133,6 @@ gulp.task('browser-sync', () => {
   })
 });
 
-gulp.task('default', ['clean', 'webpack-browser', 'webpack-react', 'css', 'html', 'images', 'watch', 'start', 'browser-sync'], () => {
+gulp.task('default', ['clean', 'webpack-browser', 'webpack-react', 'css', 'html', 'images', 'watch', 'start'], () => {
   gutil.log('Gulp is running')
 });
