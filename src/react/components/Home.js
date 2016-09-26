@@ -4,7 +4,7 @@ class Home extends Component {
 	render() {
 		return (
 			<article class='contents'>
-				
+				s
 			</article>
 		)
 	}
