@@ -2,6 +2,7 @@
 import gulp from 'gulp';
 import gutil from 'gulp-util'; // for logging
 import cleanCSS from 'gulp-clean-css';
+import sass from 'gulp-sass';
 import htmlmin from 'gulp-htmlmin';
 import imagemin from 'gulp-imagemin';
 import del from 'del'; // to delete dist/ driectory
@@ -27,6 +28,7 @@ const DIR = {
 const SRC = {
   JS: DIR.SRC + '/js/*.js',
   CSS: DIR.SRC + '/css/*.css',
+  SASS: DIR.SRC + '/sass/**/*.scss',
   HTML: DIR.SRC + '/*.html',
   IMAGES: DIR.SRC + '/images/*',
   EXPRESS: 'src/express/**/*.js',
@@ -36,6 +38,7 @@ const SRC = {
 const DEST = {
   JS: DIR.PUBLIC + '/js/',
   CSS: DIR.PUBLIC + '/css/',
+  SASS: DIR.PUBLIC + '/css/',
   HTML: DIR.PUBLIC + '/',
   IMAGES: DIR.PUBLIC + '/images/',
   EXPRESS: 'express-app/',
@@ -82,6 +85,12 @@ gulp.task('css', () => {
     .pipe( gulp.dest(DEST.CSS) );
 });
 
+gulp.task('sass', () => {
+  return gulp.src(SRC.SASS)
+    .pipe( sass().on('error', sass.logError) )
+    .pipe( gulp.dest(DEST.SASS) )
+})
+
 gulp.task('html', () => {
   return gulp.src(SRC.HTML)
     .pipe( htmlmin({collapseWhitespace: true}) )
@@ -104,6 +113,7 @@ gulp.task('watch', () => {
 		webpack_react: gulp.watch(SRC.REACT, ['webpack-react']),
 		webpack_browser: gulp.watch(SRC.JS, ['webpack-browser']),
     css: gulp.watch(SRC.CSS, ['css']),
+    sass: gulp.watch(SRC.SASS, ['sass']),
     html: gulp.watch(SRC.HTML, ['html']),
     images: gulp.watch(SRC.IMAGES, ['images']),
     // babel: gulp.watch(SRC.SERVER, ['babel']),
@@ -133,6 +143,6 @@ gulp.task('browser-sync', () => {
   })
 });
 
-gulp.task('default', ['clean', 'webpack-browser', 'webpack-react', 'css', 'html', 'images', 'watch', 'start'], () => {
+gulp.task('default', ['clean', 'webpack-browser', 'webpack-react', 'css', 'sass', 'html', 'images', 'watch', 'start'], () => {
   gutil.log('Gulp is running')
 });
