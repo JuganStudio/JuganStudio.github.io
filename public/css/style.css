@@ -1,1 +1,1 @@
-body{font-size:16px/1}li{list-style:circle}
+body,header,ul{display:flex}body{font:16px/1 sans-serif;margin:0}#root{width:100%}a{color:rgba(242,104,43,.8);font-weight:700;text-decoration:none}header{align-items:center;padding:10px}ul{flex-direction:row;justify-content:space-between;align-items:center}li{list-style:none;padding:0 10px}

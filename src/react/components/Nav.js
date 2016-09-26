@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 let ulStyle = {
-	display: 'inline-block'
+
 };
 
 let liStyle = {
-	display: 'inline-block'
+
 };
 
 class Nav extends Component {
