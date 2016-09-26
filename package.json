@@ -25,6 +25,7 @@
     "browser-sync": "^2.16.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^2.0.12",
     "gulp-file-cache": "0.0.1",
@@ -34,6 +35,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-util": "^3.0.7",
     "gulp-webpack": "^1.5.0",
+    "marked": "^0.3.6",
     "react-addons-css-transition-group": "^15.3.2",
     "react-router": "^2.8.1"
   }

@@ -1,8 +1,11 @@
 'use strict';
 import gulp from 'gulp';
 import gutil from 'gulp-util'; // for logging
+
 import cleanCSS from 'gulp-clean-css';
 import sass from 'gulp-sass';
+import autoprefixer from 'gulp-autoprefixer';
+
 import htmlmin from 'gulp-htmlmin';
 import imagemin from 'gulp-imagemin';
 import del from 'del'; // to delete dist/ driectory
@@ -82,12 +85,21 @@ gulp.task('webpack-browser', () => {
 gulp.task('css', () => {
   return gulp.src(SRC.CSS)
     .pipe( cleanCSS({compatibility: 'ie8'}) )
+    .pipe( autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }) )
     .pipe( gulp.dest(DEST.CSS) );
 });
 
 gulp.task('sass', () => {
   return gulp.src(SRC.SASS)
     .pipe( sass().on('error', sass.logError) )
+    .pipe( autoprefixer({
+      // browsers: ['Chrome, FireFox, Explorer, Edge, iOS, Safari, ExplorerMobile'],
+      browsers: ['> 5%'],
+      cascade: false
+    }) )
     .pipe( gulp.dest(DEST.SASS) )
 })
 
