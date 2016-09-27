@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import marked from 'marked';
 
+import HomeDescription from './HomeDescription';
+
 marked.setOptions({
   renderer: new marked.Renderer(),
   gfm: true,
@@ -32,9 +34,30 @@ Projects 탭을 참조하세요!
  * 김수희
  * 이승진
 `
+// <div className='markup' dangerouslySetInnerHTML={{__html: marked(intro)}}></div>
+
+let descriptions = [
+  {
+    title1: 'Origin from',
+    title2: 'REAL',
+    description: '저희는 SW 창업동아리 REAL 4기 팁입니다.'
+  },
+  {
+    title1: '젊은',
+    title2: '20대',
+    description: '예. 우린 젊어요.'
+  },
+  {
+    title1: '호박고구마',
+    title2: '호박고구마호박고구마!',
+    description: '고구마엔 우유'
+  }
+]
 
 class Home extends Component {
 	render() {
+    let homeDescriptions = descriptions.map( (desc, i) => <HomeDescription key={i} {...desc} />)
+
 		return (
 			<div className='home-contents'>
         <div className='bg_1'>
@@ -42,9 +65,9 @@ class Home extends Component {
           <span>매 주 금요일에 새로운 서비스를 런칭합니다.</span>
         </div>
         <div className='bg_2'>
-          
+          { homeDescriptions }
         </div>
-				<div dangerouslySetInnerHTML={{__html: marked(intro)}}></div>
+
 
 			</div>
 		)

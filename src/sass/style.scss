@@ -1,4 +1,4 @@
-$margin-side: 215px;
+$margin-side: 120px;
 $padding-side: 15px;
 
 body {
@@ -67,11 +67,15 @@ header {
 	height: auto;
 
 	margin-top: -20px;
+	display: flex;
+	flex-direction: column;
 
 	.bg_1 {
 		width: 1600px;
 		height: 700px;
-		position: absolute;
+		position: relative;
+		display: block;
+		order: 1;
 		background: url('../images/bg_1.jpg') no-repeat;
 
 
@@ -96,25 +100,49 @@ header {
 			font-size: 24px;
 		}
 	}
+
+	.bg_2 {
+		width: 1600px;
+		height: 350px;
+		background-color: white;
+		position: relative;
+		order: 2;
+		padding: 0px $margin-side;
+
+		display: flex;
+		flex-direction: row;
+		align-content: space-between;
+
+		.home-description {
+			width: 350px;
+			margin-top: 95px;
+			padding: 0px 20px;
+
+			display: flex;
+			flex-direction: column;
+
+			.home-description-title {
+				font-family: 'Raleway';
+				font-size: 20px;
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+
+			.home-description-seperator {
+				border: 1px rgb(26, 188, 156) solid;
+			}
+
+			div ~ span {
+				margin-top: 10px;
+			}
+		}
+	}
+
+	.markup {
+		position: relative;
+	}
 }
 
-// .bg_1 {
-// 	width: 100%;
-// 	height: auto;
-//
-//
-// 	.bg_21 {
-//
-// 		& span:first-child {
-// 			font-family: 'Raleway';
-// 			color: white;
-// 		}
-//
-// 		& span:last-child {
-			// font-family: 'Lato';
-			// color: rgb(91,97,102);
-// 		}
-//
-// 	}
-//
-// }
+footer {
+	position: relative;
+}

@@ -51,11 +51,19 @@ header {
 .home-contents {
   width: auto;
   height: auto;
-  margin-top: -20px; }
+  margin-top: -20px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column; }
   .home-contents .bg_1 {
     width: 1600px;
     height: 700px;
-    position: absolute;
+    position: relative;
+    display: block;
+    -webkit-box-ordinal-group: 2;
+    order: 1;
     background: url("../images/bg_1.jpg") no-repeat;
     display: -webkit-box;
     display: flex;
@@ -75,3 +83,40 @@ header {
       font-family: 'Lato';
       color: #8f9396;
       font-size: 24px; }
+  .home-contents .bg_2 {
+    width: 1600px;
+    height: 350px;
+    background-color: white;
+    position: relative;
+    -webkit-box-ordinal-group: 3;
+    order: 2;
+    padding: 0px 120px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    align-content: space-between; }
+    .home-contents .bg_2 .home-description {
+      width: 350px;
+      margin-top: 95px;
+      padding: 0px 20px;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column; }
+      .home-contents .bg_2 .home-description .home-description-title {
+        font-family: 'Raleway';
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px; }
+      .home-contents .bg_2 .home-description .home-description-seperator {
+        border: 1px #1abc9c solid; }
+      .home-contents .bg_2 .home-description div ~ span {
+        margin-top: 10px; }
+  .home-contents .markup {
+    position: relative; }
+
+footer {
+  position: relative; }
