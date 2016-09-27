@@ -38,9 +38,9 @@ Projects 탭을 참조하세요!
 
 let descriptions = [
   {
-    title1: 'Origin from',
+    title1: '소속',
     title2: 'REAL',
-    description: '저희는 SW 창업동아리 REAL 4기 팁입니다.'
+    description: '저희는 SW 창업동아리 REAL 4기 주간 스튜디오입니다.'
   },
   {
     title1: '젊은',
@@ -64,10 +64,13 @@ class Home extends Component {
           <span>주간 스튜디오</span>
           <span>매 주 금요일에 새로운 서비스를 런칭합니다.</span>
         </div>
+
+        // 간단한 설명
         <div className='bg_2'>
           { homeDescriptions }
         </div>
 
+        // 프로젝트들
 
 			</div>
 		)
