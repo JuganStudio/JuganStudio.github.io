@@ -1,36 +1,77 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 body {
   display: -webkit-box;
   display: flex;
-  font-family: 'Noto Sans KR', sans-serif;
-  margin: 0; }
+  font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f6e2d8; }
 
 #root {
   width: 100%; }
 
-a {
-  color: rgba(242, 104, 43, 0.8);
-  font-weight: 700;
-  text-decoration: none; }
+.overlay {
+  height: 100%; }
+
+.navbar {
+  background: transparent;
+  border: none; }
 
 header {
+  position: relative;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
-  padding: 10px; }
+  margin: 0px 200px; }
+  header .logo {
+    font-size: 27px;
+    font-family: 'Open Sans';
+    font-weight: 800;
+    color: white; }
+  header ul {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0; }
+    header ul li {
+      list-style: none;
+      padding: 0 10px;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: 'Raleway'; }
+      header ul li a {
+        color: white; }
 
-ul {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  align-items: center; }
-
-li {
-  list-style: none;
-  padding: 0 10px; }
+.home-contents {
+  width: auto;
+  height: auto;
+  margin-top: -20px; }
+  .home-contents .bg_1 {
+    width: 1600px;
+    height: 700px;
+    position: absolute;
+    background: url("../images/bg_1.jpg") no-repeat;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    vertical-align: middle; }
+    .home-contents .bg_1 span {
+      color: white;
+      padding: 20px 25px; }
+    .home-contents .bg_1 span:first-child {
+      font-family: 'Raleway';
+      font-size: 30px; }
+    .home-contents .bg_1 span:last-child {
+      font-family: 'Lato';
+      color: #8f9396;
+      font-size: 24px; }

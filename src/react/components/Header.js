@@ -1,31 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-let style = {
-	display: 'flex',
-	width: '100%',
-};
-
-let imgStyle = {
-	width: '120px',
-	height: 'auto'
-}
+let logoText = 'Jugan Studio';
+let logoClass = 'active logo';
 
 class Header extends Component {
-
 
 	render() {
 		let nav = this.props.children;
 
 		return (
-			<header>
-				<div>
-					<Link to='/' activeClassName='active'>
-						<img src="./images/weekly-studio.png" alt="our image"
-							style={imgStyle} />
+			<header className='container-fluid navbar navbar-default navbar-fixed-top'>
+				<div className='container'>
+					<Link to='/' activeClassName={logoClass}>
+						{ logoText }
 					</Link>
 				</div>
-				<div>
+				<div className='container'>
 					{ nav }
 				</div>
 			</header>

@@ -1,40 +1,120 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+$margin-side: 215px;
+$padding-side: 15px;
 
 body {
 	display: flex;
 	// font: 16px/1 sans-serif;
 	// font-family: 'Lato', sans-serif;
 	// font-family: 'Lato', 'Noto Sans KR';
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
 	margin: 0;
-	// background-color: #f6e2d8;
+	padding: 0;
+	background-color: #f6e2d8;
 }
 
 #root {
 	width: 100%;
 }
 
-a {
-  color: rgba(242, 104, 43, 0.8);
-  font-weight: 700;
-  text-decoration: none;
+.overlay {
+	height: 100%
 }
 
+// override bootstrap.min.css
+.navbar {
+	background: transparent;
+	border: none;
+}
 
 header {
+	position: relative;
 	display: flex;
 	align-items: center;
-	padding: 10px;
+	// margin: 0px $margin-side;
+	margin: 0px 200px;
+
+
+	.logo {
+		font-size: 27px;
+		font-family: 'Open Sans';
+		font-weight: 800;
+		color: rgba(255, 255, 255, 1);
+	}
+
+	ul {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+
+		li {
+			list-style: none;
+			padding: 0 10px;
+
+			font-size: 16px;
+			font-weight: bold;
+			font-family: 'Raleway';
+			a {
+				color: rgba(255, 255, 255, 1);
+			}
+		}
+	}
 }
 
-ul {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+.home-contents {
+	width: auto;
+	height: auto;
+
+	margin-top: -20px;
+
+	.bg_1 {
+		width: 1600px;
+		height: 700px;
+		position: absolute;
+		background: url('../images/bg_1.jpg') no-repeat;
+
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		vertical-align: middle;
+
+		span {
+			color: white;
+			padding: 20px 25px;
+		}
+
+		& span:first-child {
+			font-family: 'Raleway';
+			font-size: 30px;
+		}
+
+		& span:last-child {
+			font-family: 'Lato';
+			color: #8f9396;
+			font-size: 24px;
+		}
+	}
 }
 
-li {
-	list-style: none;
-	padding: 0 10px;
-}
+// .bg_1 {
+// 	width: 100%;
+// 	height: auto;
+//
+//
+// 	.bg_21 {
+//
+// 		& span:first-child {
+// 			font-family: 'Raleway';
+// 			color: white;
+// 		}
+//
+// 		& span:last-child {
+			// font-family: 'Lato';
+			// color: rgb(91,97,102);
+// 		}
+//
+// 	}
+//
+// }

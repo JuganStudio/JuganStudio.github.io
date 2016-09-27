@@ -36,10 +36,17 @@ Projects 탭을 참조하세요!
 class Home extends Component {
 	render() {
 		return (
-			<article className='contents'>
+			<div className='home-contents'>
+        <div className='bg_1'>
+          <span>주간 스튜디오</span>
+          <span>매 주 금요일에 새로운 서비스를 런칭합니다.</span>
+        </div>
+        <div className='bg_2'>
+          
+        </div>
 				<div dangerouslySetInnerHTML={{__html: marked(intro)}}></div>
 
-			</article>
+			</div>
 		)
 	}
 }
