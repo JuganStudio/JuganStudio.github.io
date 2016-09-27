@@ -2,16 +2,29 @@
 import gulp from 'gulp';
 import gutil from 'gulp-util'; // for logging
 
+// bower
+import bower from 'gulp-bower'
+
+// bootstrap
+import bsConfig from 'gulp-bootstrap-configurator';
+
+// css
 import cleanCSS from 'gulp-clean-css';
 import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 
+// font
+import googleWebFonts from 'gulp-google-webfonts';
+
+// html, image
 import htmlmin from 'gulp-htmlmin';
 import imagemin from 'gulp-imagemin';
+
 import del from 'del'; // to delete dist/ driectory
 
 import babel from 'gulp-babel';
 import Cache from 'gulp-file-cache'; // dont't read unchanged file
+let cache = new Cache();
 
 import nodemon from 'gulp-nodemon'; // watch and restart express server
 
@@ -20,7 +33,7 @@ import webpackConfig from './webpack.config';
 
 import browserSync from 'browser-sync';
 
-let cache = new Cache();
+
 
 const DIR = {
   SRC: 'src',
@@ -32,20 +45,24 @@ const SRC = {
   JS: DIR.SRC + '/js/*.js',
   CSS: DIR.SRC + '/css/*.css',
   SASS: DIR.SRC + '/sass/**/*.scss',
+  FONTS: DIR.SRC + '/fonts/**/*',
   HTML: DIR.SRC + '/*.html',
   IMAGES: DIR.SRC + '/images/*',
   EXPRESS: 'src/express/**/*.js',
-	REACT: 'src/react/**/*.js'
+	REACT: 'src/react/**/*.js',
+  BOWER: '/bower_components'
 };
 
 const DEST = {
   JS: DIR.PUBLIC + '/js/',
   CSS: DIR.PUBLIC + '/css/',
   SASS: DIR.PUBLIC + '/css/',
+  FONTS: DIR.PUBLIC + '/fonts/',
   HTML: DIR.PUBLIC + '/',
   IMAGES: DIR.PUBLIC + '/images/',
   EXPRESS: 'express-app/',
-	REACT: DIR.PUBLIC + '/js/'
+	REACT: DIR.PUBLIC + '/js/',
+  BOWER: DIR.PUBLIC + '/bower_components/'
 };
 
 //
@@ -80,7 +97,29 @@ gulp.task('webpack-browser', () => {
 	return gulp.src('src/js/main.js')
 		.pipe( webpack(webpackConfig.browser) )
 		.pipe( gulp.dest(DEST.JS) )
+});
+
+gulp.task('bootstrap', ['bootstrap-css', 'bootstrap-js'], () => {
+  // Do nothing. Just chaining
 })
+
+gulp.task('bootstrap-css', () => {
+  return gulp.src('./bootstrap.config.json')
+    .pipe( bsConfig.css({
+      compress: true,
+      bower: true
+    }) )
+    .pipe( gulp.dest(DEST.CSS) );
+});
+
+gulp.task('bootstrap-js', () => {
+  return gulp.src('./bootstrap.config.json')
+    .pipe( bsConfig.js({
+      compress: true,
+      bower: true
+    }) )
+    .pipe( gulp.dest(DEST.JS) );
+});
 
 gulp.task('css', () => {
   return gulp.src(SRC.CSS)
@@ -103,6 +142,20 @@ gulp.task('sass', () => {
     .pipe( gulp.dest(DEST.SASS) )
 })
 
+gulp.task('fonts', () => {
+  return gulp.src(SRC.FONTS)
+    .pipe( gulp.dest(DEST.FONTS) );
+});
+
+gulp.task('google-web-fonts', () => {
+  return gulp.src('./fonts.list')
+    .pipe( googleWebFonts({
+      fontsDIr: 'googlefonts/',
+      cssFilename: 'googlefonts.css'
+    }) )
+    .pipe( gulp.dest(DEST.FONTS) );
+});
+
 gulp.task('html', () => {
   return gulp.src(SRC.HTML)
     .pipe( htmlmin({collapseWhitespace: true}) )
@@ -113,6 +166,11 @@ gulp.task('images', () => {
   return gulp.src(SRC.IMAGES)
     .pipe( imagemin() )
     .pipe( gulp.dest(DEST.IMAGES) );
+});
+
+gulp.task('bower', () => {
+  return bower({ directory: './public/bower_components', cwd: __dirname })
+    .pipe( gulp.dest(DEST.BOWER) );
 });
 
 gulp.task('clean', () => {
@@ -126,8 +184,10 @@ gulp.task('watch', () => {
 		webpack_browser: gulp.watch(SRC.JS, ['webpack-browser']),
     css: gulp.watch(SRC.CSS, ['css']),
     sass: gulp.watch(SRC.SASS, ['sass']),
+    google_web_fonts: gulp.watch('./fonts.list', ['google-web-fonts']),
     html: gulp.watch(SRC.HTML, ['html']),
     images: gulp.watch(SRC.IMAGES, ['images']),
+    bootstrap: gulp.watch('./bootstrap.config.json', ['bootstrap'])
     // babel: gulp.watch(SRC.SERVER, ['babel']),
   };
 
@@ -155,6 +215,8 @@ gulp.task('browser-sync', () => {
   })
 });
 
-gulp.task('default', ['clean', 'webpack-browser', 'webpack-react', 'css', 'sass', 'html', 'images', 'watch', 'start'], () => {
+gulp.task('default', ['clean', 'webpack-browser', 'webpack-react', 'bootstrap', 'bower',
+  'css', 'sass', 'fonts', 'google-web-fonts',
+  'html', 'images', 'watch', 'start'], () => {
   gutil.log('Gulp is running')
 });
