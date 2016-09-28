@@ -1,5 +1,5 @@
-$margin-side: 120px;
-$padding-side: 15px;
+$side-margin: 6rem;
+$side-padding: 1rem;
 
 body {
 	display: flex;
@@ -32,6 +32,7 @@ header {
 	align-items: center;
 	// margin: 0px $margin-side;
 	margin: 0px 200px;
+	padding: 0px $side-margin !important;
 
 
 	.logo {
@@ -63,21 +64,18 @@ header {
 }
 
 .home-contents {
-	width: auto;
-	height: auto;
-
 	margin-top: -20px;
 	display: flex;
 	flex-direction: column;
 
 	.bg_1 {
-		width: 1600px;
+		width: 100%;
 		height: 700px;
 		position: relative;
 		display: block;
 		order: 1;
 		background: url('../images/bg_1.jpg') no-repeat;
-
+		background-size: cover;
 
 		display: flex;
 		flex-direction: column;
@@ -86,7 +84,7 @@ header {
 
 		span {
 			color: white;
-			padding: 20px 25px;
+			padding: 20px $side-margin + 1.5rem;
 		}
 
 		& span:first-child {
@@ -102,24 +100,27 @@ header {
 	}
 
 	.bg_2 {
-		width: 1600px;
-		height: 350px;
+		width: 100%;
+		height: 100%;
 		background-color: white;
 		position: relative;
 		order: 2;
-		padding: 0px $margin-side;
+		padding: 0px $side-margin;
 
 		display: flex;
 		flex-direction: row;
-		align-content: space-between;
+		flex-wrap: nowrap;
+		justify-content: space-between;
 
+		// HomeDescription css... 컴포넌트 안에서 스타일링 할까?
 		.home-description {
 			width: 350px;
-			margin-top: 95px;
+			margin: 95px 0px 70px 0px;
 			padding: 0px 20px;
 
 			display: flex;
 			flex-direction: column;
+			align-content: space-between;
 
 			.home-description-title {
 				font-family: 'Raleway';

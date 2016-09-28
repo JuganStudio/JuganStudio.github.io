@@ -14,28 +14,6 @@ marked.setOptions({
   smartypants: false
 });
 
-
-let intro = `
-# 주간 스튜디오
-주간스튜디오는 매주 1개의 서비스를 선보일 계획입니다.
-정말 그렇게 될지는 잘 모르겠어요.
-
-
-# 진행중인 프로젝트
-Projects 탭을 참조하세요!
-
-# 멤버들
-## 개발
- * 박주형
- * 나석주
- * 김자은(미정)
-
-## 기획 / 마케팅
- * 김수희
- * 이승진
-`
-// <div className='markup' dangerouslySetInnerHTML={{__html: marked(intro)}}></div>
-
 let descriptions = [
   {
     title1: '소속',
@@ -44,19 +22,58 @@ let descriptions = [
   },
   {
     title1: '젊은',
-    title2: '20대',
-    description: '예. 우린 젊어요.'
+    title2: '늙은',
+    description: '쓸 말이 없네?'
   },
   {
     title1: '호박고구마',
     title2: '호박고구마호박고구마!',
     description: '고구마엔 우유'
   }
+];
+
+let members = [
+  {
+    name: '박주형',
+    role: '개발',
+    imageSource: ''
+  },
+  {
+    name: '나석주',
+    role: '개발',
+    imageSource: ''
+  },
+  {
+    name: '김수희',
+    role: '기획',
+    imageSource: ''
+  },
+  {
+    name: '이승진',
+    role: '기획',
+    imageSource: ''
+  },
+  {
+    name: '김자은',
+    role: '개발?',
+    imageSource: ''
+  },
+]
+
+let projects = [
+  {
+    title: '주간 스튜디오 홈페이지 제작',
+    link: './projects/juganstudio-github-io',
+    imageSource: './images/projects/juganstudio/thumbnail.png',
+    github: 'https://github.com/JuganStudio/JuganStudio.github.io',
+    tags: ['front', 'react']
+  }
 ]
 
 class Home extends Component {
 	render() {
-    let homeDescriptions = descriptions.map( (desc, i) => <HomeDescription key={i} {...desc} />)
+    let homeDescriptions = descriptions.map( (desc, i) =>
+      <HomeDescription key={i} {...desc} /> );
 
 		return (
 			<div className='home-contents'>

@@ -22,7 +22,8 @@ header {
   display: flex;
   -webkit-box-align: center;
   align-items: center;
-  margin: 0px 200px; }
+  margin: 0px 200px;
+  padding: 0px 6rem !important; }
   header .logo {
     font-size: 27px;
     font-family: 'Open Sans';
@@ -49,8 +50,6 @@ header {
         color: white; }
 
 .home-contents {
-  width: auto;
-  height: auto;
   margin-top: -20px;
   display: -webkit-box;
   display: flex;
@@ -58,13 +57,14 @@ header {
   -webkit-box-direction: normal;
   flex-direction: column; }
   .home-contents .bg_1 {
-    width: 1600px;
+    width: 100%;
     height: 700px;
     position: relative;
     display: block;
     -webkit-box-ordinal-group: 2;
     order: 1;
     background: url("../images/bg_1.jpg") no-repeat;
+    background-size: cover;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
@@ -75,7 +75,7 @@ header {
     vertical-align: middle; }
     .home-contents .bg_1 span {
       color: white;
-      padding: 20px 25px; }
+      padding: 20px 7.5rem; }
     .home-contents .bg_1 span:first-child {
       font-family: 'Raleway';
       font-size: 30px; }
@@ -84,28 +84,31 @@ header {
       color: #8f9396;
       font-size: 24px; }
   .home-contents .bg_2 {
-    width: 1600px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
     background-color: white;
     position: relative;
     -webkit-box-ordinal-group: 3;
     order: 2;
-    padding: 0px 120px;
+    padding: 0px 6rem;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     flex-direction: row;
-    align-content: space-between; }
+    flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between; }
     .home-contents .bg_2 .home-description {
       width: 350px;
-      margin-top: 95px;
+      margin: 95px 0px 70px 0px;
       padding: 0px 20px;
       display: -webkit-box;
       display: flex;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
-      flex-direction: column; }
+      flex-direction: column;
+      align-content: space-between; }
       .home-contents .bg_2 .home-description .home-description-title {
         font-family: 'Raleway';
         font-size: 20px;
